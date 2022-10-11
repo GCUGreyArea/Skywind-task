@@ -1,2 +1,6 @@
-**/.history/**
-**/build/*
+.history
+.vscode
+build
+*.o
+*.exe
+*.so

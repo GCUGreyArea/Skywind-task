@@ -16,7 +16,6 @@ int NumberList::add() {
         total += n;
     }
 
-
     return total;
 }
 
@@ -92,13 +91,6 @@ bool NumberList::to_num_vector() {
     }
 
     if(state == WORD ) {
-        std::cout << "list is " << list << std::endl;
-        std::cout << "Numbers [";
-        for(auto n : mNums) {
-            std::cout << " " << n;
-        }
-        std::cout << "]" << std::endl;
-        std::cout << "Number list : " << mNumList << std::endl;
         throw Exception::EndOfContent(word);
     }
 

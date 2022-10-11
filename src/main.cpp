@@ -3,7 +3,7 @@
  * @author Barry Robinson (barry.w.robinson64@gmail.com)
  * @brief main executable file for project
  * @version 0.1
- * @date 26/09/2021
+ * @date 11/10/2022
  *
  * @copyright Copyright Barry Robinson(c) 2022
  * @defgroup main
@@ -46,15 +46,25 @@ int main(int argc, const char ** argv)
 
 	if(args.is_string_present("-n")) {
 		std::string cmd = args.get_string_value("-n");
-		const size_t index = cmd.find("\\n");
-		if(index)
+
+		// TODO: move this functionality into Args
+
+		size_t index = cmd.find("\\n");
+		while(index != -1) {
 			cmd = cmd.replace(index, 2, "\n");
-		else
-			throw Exception::Generic("invalid input : " + cmd);
+			index = cmd.find("\\n");
+		}
 
-		Numbers::CmdParser parser(cmd);
+		try{
+			Numbers::CmdParser parser(cmd);
+			std::string value = std::to_string(parser.add());
 
-		std::cout << "Value is : " << std::to_string(parser.add()) << std::endl;
+			std::cout << "The sum of the number list is : " << value << std::endl;
+		}
+		catch(Exception::Generic& e) {
+			std::cerr << "Exception caught : " << e.what() << std::endl;
+			return -1;
+		}
 	}
 
 	return 0;

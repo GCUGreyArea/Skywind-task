@@ -13,10 +13,10 @@ LIBDIR = .
 BASIC := $(BUILD)/src/Basic
 NUMBERS := $(BUILD)/src/Numbers
 
-TARGET  = lib$(NAME).so
+TARGET  = lib$(NAME).a
 LIBDIR  =  .
 INSTALL = /usr/local/lib
-HDRINST = /usr/local/include`
+HDRINST = /usr/local/include
 
 OBJ   := $(patsubst %.cpp,$(BUILD)/%.o,$(CXSRC)) $(patsubst %.c,$(BUILD)/%.o,$(CSRC))
 UNAME := $(shell uname -s)
@@ -37,15 +37,12 @@ endif
 all: $(TARGET)
 
 $(TARGET) : build $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -shared  -o $(BUILD)/$(TARGET) -lpthread -lframework -lre2 -lyaml-cpp
-	make copy
+	ar rcs build/$(TARGET) $(OBJ)
+	ranlib build/$(TARGET)
 
 build :
 	mkdir -p $(BASIC)
 	mkdir -p $(NUMBERS)
-
-copy:
-	cp $(BUILD)/$(TARGET) $(INSTALL)
 
 $(BUILD)/%.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@

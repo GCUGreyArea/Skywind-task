@@ -4,7 +4,7 @@ TARGET  = test_$(NAME)
 CXXSRC = $(wildcard src/*.cpp)
 CSRC   = $(wildcard src/*.c)
 
-LIB     = lib$(NAME).so
+LIB     = lib$(NAME).a
 BUILD   = build
 LIBDIR  = ../lib
 LIBDEP  = $(LIBDIR)/$(BUILD)/$(LIB)
@@ -14,7 +14,7 @@ COBJ      := $(patsubst %.c,$(BUILD)/%.o,$(CSRC))
 
 
 LIBRARIES := -lgtest -lpthread -lglog
-UNAME := $(shell uname -s)
+UNAME     := $(shell uname -s)
 
 ifeq ($(UNAME), Darwin)
 CC       = cc
@@ -32,7 +32,7 @@ endif
 all: $(TARGET) $(OBJ) $(COBJ) $(LIBDEP)
 
 $(TARGET) : build $(CXXOBJ) $(COBJ)
-	$(CXX) $(CXXFLAGS) $(CXXOBJ) $(COBJ) -o $(BUILD)/$(TARGET) -l$(NAME) $(LIBRARIES)
+	$(CXX) $(CXXFLAGS) $(CXXOBJ) $(COBJ) -o $(BUILD)/$(TARGET) -l$(NAME) -L$(LIBDIR)/build $(LIBRARIES)
 
 build:
 	mkdir -p "$(BUILD)/src"
@@ -45,9 +45,6 @@ $(BUILD)/%.o: %.c
 
 $(BUILD)/%.o: %.cpp
 	$(CXX) -c $(CXXFLAGS) -c $< -o $@
-
-run:
-	./$(BUILD)/$(TARGET)
 
 clean:
 	rm -rf $(BUILD)

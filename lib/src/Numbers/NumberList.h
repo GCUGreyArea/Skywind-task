@@ -3,7 +3,8 @@
 /**
  * @file NumberList.h
  * @author barry robinson (barry.w.robinson64@gmail.com)
- * @brief A class to evaluate a list of numbers
+ * @brief A class to evaluate a list of numbers given a
+ * set of delimiters
  * @version 1.0
  * @date 10-10-2022
  *

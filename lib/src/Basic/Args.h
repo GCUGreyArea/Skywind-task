@@ -1,5 +1,15 @@
 #ifndef __ARGS__
 #define __ARGS__
+/**
+ * @file Args.h
+ * @author Barry Robinson (barry.w.robinson64@gmail.com)
+ * @brief Provide a simple class for argument extraction and manipulation
+ * @version 1.0
+ * @date 11-10-2022
+ *
+ * @copyright Copyright (C) 2022 Alert Logic
+ *
+ */
 
 #include <map>
 #include <string>

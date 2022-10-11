@@ -9,7 +9,7 @@ BUILD      = build
 
 TESTTARGET = $(TESTDIR)/$(BUILD)/test_$(TARGET)
 BNCTARGET  = $(BENCHDIR)/$(BUILD)/benchmark_$(TARGET)
-LIBTARGET  = $(LIBDIR)/$(BUILD)/lib$(TARGET).so
+LIBTARGET  = $(LIBDIR)/$(BUILD)/lib$(TARGET).a
 DOCTARGET  = $(DOXYDIR)/generated
 
 SRC = $(shell find src -name '*.cpp')
@@ -35,7 +35,7 @@ ARGS =
 all: $(LIBTARGET) $(TESTTARGET) $(BNCTARGET) $(TARGET)
 
 $(TARGET) : build $(LIBTARGET) $(TESTTARGET) $(BENCHTARGET) $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(BUILD)/$(TARGET) -lpthread -lhs -l$(TARGET) -I$(LIBDIR)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(BUILD)/$(TARGET) -lpthread -lhs -l$(TARGET) -I$(LIBDIR) -L$(LIBDIR)/build $(LIBTARGET)
 
 build :
 	mkdir -p "$(BUILD)/src"
@@ -77,11 +77,13 @@ docs: $(DOCTARGET)
 
 test: $(TESTTARGET)
 	cd $(LIBDIR) && make
-	cd $(TESTDIR) && make run
+	cd $(TESTDIR) && make
+	$(TESTTARGET)
 
 benchmark: $(BNCTARGET)
 	cd $(LIBDIR) && make
-	cd $(BENCHDIR) && make run
+	cd $(BENCHDIR) && make
+	$(BNCTARGET)
 
 runtest:
 	cd $(TESTDIR) && make run
