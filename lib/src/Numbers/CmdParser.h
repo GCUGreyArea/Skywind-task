@@ -4,7 +4,7 @@
  * @file CmdParser.h
  * @author barry.robinson (barry.robinson@alertlogic.com)
  * @brief Defines a basic parser for the command string
- * This splits up up the deliminator commands and the number
+ * This splits up up the delimiter commands and the number
  * list adn offloads processing of the number list to a
  * NumberList class in the same library.
  * @version 1.0

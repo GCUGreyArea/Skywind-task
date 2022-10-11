@@ -57,11 +57,11 @@ The resulting HTML pages will be available in `docs/output/html`
 ## BNF for valid input
 
 ```bash
-Input                  ::= <Start> <DeliminatorList> <End> <NumberList>
-Start                  ::= '//'
-DeliminatorList        ::= <SimpleDeliminator> || 1
-SimpleDeliminator      ::= [0-9A-Za-z\,\-\.\*\&\^\%\$\£\@\!\+]+
-ComplexDeliminatorList ::= '[' <SimpleDeliminator> ']' || '[' <SimpleDeliminator> ']' <ComplexDeliminatorList>
-End                    ::= '\n'
-NumberList             ::= [0-9]+ || [0-9]+ <SimpleDeliminator> <NumberList>
+Input                ::= <Start> <DelimiterList> <End> <NumberList>
+Start                ::= '//'
+DelimiterList        ::= <SimpleDelimiter> || <ComplexDelimiterList>
+SimpleDelimiter      ::= [0-9A-Za-z\,\-\.\*\&\^\%\$\£\@\!\+]+
+ComplexDelimiterList ::= '[' <SimpleDelimiter> ']' || '[' <SimpleDelimiter> ']' <ComplexDelimiterList>
+End                  ::= '\n'
+NumberList           ::= [0-9]+ || [0-9]+ <SimpleDelimiter> <NumberList>
 ```
