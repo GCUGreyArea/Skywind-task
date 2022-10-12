@@ -6,7 +6,10 @@
  * @date 11/10/2022
  *
  * @copyright Copyright Barry Robinson(c) 2022
- * @defgroup main
+ *
+ * @addtogroup application
+ * @{
+ * @addtogroup main
  * @{
  */
 
@@ -28,9 +31,23 @@
 #include <libTask.h>
 
 void static inline do_help() {
-	std::cout << "Help output" << std::endl;
+	std::cout << "./build/task -n \"//[.][,]\\n1,2.3.4\"" << std::endl;
+	std::cout << "\nValid input" << std::endl;
+	std::cout << "\tInput                ::= <Start> <DelimiterList> <End> <NumberList>" << std::endl;
+	std::cout << "\tStart                ::= '//'" << std::endl;
+	std::cout << "\tDelimiterList        ::= <SimpleDelimiter> || <ComplexDelimiterList>" << std::endl;
+	std::cout << "\tSimpleDelimiter      ::= [0-9A-Za-z\\,\\-\\.\\*\\&\\^\\%\\$\\£\\@\\!\\+]+" << std::endl;
+	std::cout << "\tComplexDelimiterList ::= '[' <SimpleDelimiter> ']' || '[' <SimpleDelimiter> ']' <ComplexDelimiterList>" << std::endl;
+	std::cout << "\tEnd                  ::= '\\n'" << std::endl;
+	std::cout << "\tNumberList           ::= [0-9]+ || [0-9]+ <SimpleDelimiter> <NumberList>" << std::endl;
 }
-
+/**
+ * @brief Program entry point
+ *
+ * @param argc
+ * @param argv
+ * @return int
+ */
 int main(int argc, const char ** argv)
 {
 	Basic::Args args(argc,argv);
@@ -44,7 +61,7 @@ int main(int argc, const char ** argv)
 	}
 
 
-	if(args.is_string_present("-n")) {
+	if(args.is_key_present("-n")) {
 		std::string cmd = args.get_string_value("-n");
 
 		// TODO: move this functionality into Args
@@ -67,9 +84,12 @@ int main(int argc, const char ** argv)
 		}
 	}
 
+	do_help();
+
 	return 0;
 }
 
 /**
+ * @}
  * @}
  */

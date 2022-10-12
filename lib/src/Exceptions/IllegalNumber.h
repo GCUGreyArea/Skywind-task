@@ -8,7 +8,11 @@
  * @date 10-10-2022
  *
  * @copyright Copyright (C) 2022 Alert Logic
- *
+ * @addtogroup lib
+ * @{
+ * @addtogroup Exceptions
+ * @{
+ * @addtogroup IllegalNumber
  */
 #include <string>
 #include "Generic.h"
@@ -24,4 +28,9 @@ public:
 
 }// namespace Exception
 
+/**
+ * @}
+ * @}
+ * @}
+ */
 #endif//ILLEGAL_NUMBER_H

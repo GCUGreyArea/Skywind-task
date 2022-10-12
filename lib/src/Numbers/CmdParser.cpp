@@ -1,10 +1,33 @@
 #include <iostream>
 
+/**
+ * @file CmdParser.cpp
+ * @author barry.robinson (barry.robinson@alertlogic.com)
+ * @brief
+ * @version 1.0
+ * @date 12-10-2022
+ *
+ * @copyright Copyright (C) 2022 Alert Logic
+ * @copyright Copyright (C) 2022 Alert Logic
+ * @addtogroup lib
+ * @{
+ * @addtogroup Numbers
+ * @{
+ * @addtogroup CmdParser
+ * @{
+ *
+ */
 #include "CmdParser.h"
 #include "Exceptions/Exceptions.h"
 
 namespace Numbers {
 
+/**
+ * @brief Construct a new Cmd Parser:: Cmd Parser object
+ * also parse the the delimiter list so we can construct
+ * the NumberList object.
+ * @param origCmd
+ */
 CmdParser::CmdParser(std::string origCmd)
 {
     std::string cmd = origCmd;
@@ -69,11 +92,14 @@ restart:
     throw Exception::Generic("invalid input : " + origCmd);
 }
 
+/**
+ * @brief Get the sum of the numbers
+ *
+ * @return int
+ */
 int CmdParser::add() {
     if(mNumList) {
-        if(!mNumList->to_num_vector()) {
-            throw Exception::Generic("failed to parse input");
-        }
+        mNumList->to_num_vector();
 
         return mNumList->add();
     }
@@ -81,7 +107,11 @@ int CmdParser::add() {
     throw Exception::Generic("no number list supplied or constructed");
 }
 
-
-
-
 }
+
+/**
+ * @}
+ * @}
+ * @}
+ *
+ */

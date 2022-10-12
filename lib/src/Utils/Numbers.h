@@ -7,7 +7,11 @@
  * of string numeric values to their C++ equivalent types.
  * @version 1.0
  * @date 10-10-2022
- *
+ * @addtogroup lib
+ * @{
+ * @addtogroup Utils
+ * @{
+ * @addtogroup Numbers
  */
 #include <iostream>
 #include <stdio.h>
@@ -105,6 +109,13 @@ public:
     return ret;
   }
 
+  /**
+   * @brief Convert a string to an int using the base for the number.
+   *
+   * @param str
+   * @param base
+   * @return uint64_t
+   */
   static uint64_t to_int(std::string str, unsigned int base) {
     int ret = 0;
     char *end = nullptr;
@@ -157,4 +168,9 @@ public:
 
 } // namespace Utils
 
+/**
+ * @}
+ * @}
+ * @}
+ */
 #endif // NUMBERS_H

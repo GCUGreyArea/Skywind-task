@@ -8,7 +8,11 @@
  * respond to specific exception types.
  * @version 1.0
  * @date 10-10-2022
- *
+ * @addtogroup lib
+ * @{
+ * @addtogroup Exceptions
+ * @{
+ * @addtogroup Generic
  */
 #include <exception>
 #include <string>
@@ -30,4 +34,9 @@ private:
 
 };
 
+/**
+ * @}
+ * @}
+ * @}
+ */
 #endif//GENERIC_H

@@ -9,7 +9,12 @@
  * @date 10-10-2022
  *
  * @copyright Copyright (C) 2022 Alert Logic
- *
+ * @addtogroup lib
+ * @{
+ * @addtogroup Numbers
+ * @{
+ * @addtogroup NumerList
+ * @{
  */
 #include <string>
 #include <vector>
@@ -34,7 +39,7 @@ public:
 
     int add();
 
-    bool to_num_vector();
+    void to_num_vector();
 
     std::vector<int>& get_numbers() {
         return mNums;
@@ -53,5 +58,9 @@ private:
 };
 } // namespace Numbers
 
-
+/**
+ * @}
+ * @}
+ * @}
+ */
 #endif//NUMBER_LIST_H

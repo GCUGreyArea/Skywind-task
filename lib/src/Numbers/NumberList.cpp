@@ -6,6 +6,13 @@
 
 namespace Numbers {
 
+/**
+ * @brief Get the sum of the numbers in the integer number
+ * vector accounting for a maximum value. The maximum value is
+ * configurable through the constructor.
+ *
+ * @return int
+ */
 int NumberList::add() {
     int total = 0;
     for(auto n : mNums) {
@@ -19,7 +26,13 @@ int NumberList::add() {
     return total;
 }
 
-bool NumberList::to_num_vector() {
+/**
+ * @brief Parse the string number list into a vector
+ * of integer using the supplied delimiter values.
+ * @throw Exception::NegativeNumber, Exception::IllegalNumber,
+ * Exception::EndOfContent
+ */
+void NumberList::to_num_vector() {
     char * list = (char*) mNumList.c_str();
 
     std::string word;
@@ -96,10 +109,16 @@ bool NumberList::to_num_vector() {
 
     if(!map_number(word))
         throw Exception::IllegalNumber(word);
-
-    return true;
 }
 
+/**
+ * @brief Map a word as a delimiter and add it
+ * to the available set.
+ *
+ * @param word
+ * @return true
+ * @return false
+ */
 bool NumberList::map_delimeter(std::string word) {
     if(mDelimSet.find(word) == mDelimSet.end())
         return false;
@@ -107,6 +126,14 @@ bool NumberList::map_delimeter(std::string word) {
     return true;
 }
 
+/**
+ * @brief Map a work string value top value
+ * to an integer value.
+ *
+ * @param word
+ * @return true
+ * @return false
+ */
 bool NumberList::map_number(std::string word) {
     int base = Utils::Numbers::is_number(word);
     if(base == 0)

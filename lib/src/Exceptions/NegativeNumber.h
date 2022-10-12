@@ -9,7 +9,11 @@
  * @date 10-10-2022
  *
  * @copyright Copyright (C) 2022 Alert Logic
- *
+ * @addtogroup lib
+ * @{
+ * @addtogroup Exceptions
+ * @{
+ * @addtogroup NegativeNumber
  */
 
 #include <string>
@@ -25,5 +29,9 @@ public:
 };
 }
 
-
+/**
+ * @}
+ * @}
+ * @}
+ */
 #endif//NEGATIVE_NUMBER_EXCEPTION

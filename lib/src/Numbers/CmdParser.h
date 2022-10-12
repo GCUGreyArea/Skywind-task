@@ -11,7 +11,12 @@
  * @date 11-10-2022
  *
  * @copyright Copyright (C) 2022 Alert Logic
- *
+ * @addtogroup lib
+ * @{
+ * @addtogroup Numbers
+ * @{
+ * @addtogroup CmdParser
+ * @{
  */
 #include <memory>
 #include "NumberList.h"
@@ -26,6 +31,9 @@ private:
     std::unique_ptr<NumberList> mNumList;
 };
 
-}
-
+}/**
+ * @}
+ * @}
+ * @}
+ */
 #endif//CMD_PARSER_H

@@ -6,8 +6,7 @@
 TEST(testNumberList,testThatSimpleListIsMapped) {
     Numbers::NumberList list("1,2,3,4,5",{","});
 
-    if(!list.to_num_vector())
-        ASSERT_TRUE(false);
+    list.to_num_vector();
 
     auto& v = list.get_numbers();
 
@@ -24,8 +23,7 @@ TEST(testNumberList,testThatSimpleListIsMapped) {
 TEST(testNumberList,testLongerDelimiters) {
     Numbers::NumberList list("1-this-2%%%3%%%4,5",{",","-this-","%%%"});
 
-    if(!list.to_num_vector())
-        ASSERT_TRUE(false);
+    list.to_num_vector();
 
     auto& v = list.get_numbers();
 
@@ -115,7 +113,7 @@ TEST(testNumberList,testBadDelimiter) {
 TEST(testNumberList,testThatCorrectValuesAreGiven) {
     Numbers::NumberList list("1,2,3,4,5",{","});
 
-    ASSERT_TRUE(list.to_num_vector());
+    list.to_num_vector();
 
     ASSERT_EQ(list.add(),15);
 }
@@ -123,7 +121,7 @@ TEST(testNumberList,testThatCorrectValuesAreGiven) {
 TEST(testNumberList,testThatCorrectValuesAreGivenSimpleList) {
     Numbers::NumberList list("1,2,3",{","});
 
-    ASSERT_TRUE(list.to_num_vector());
+    list.to_num_vector();
 
     ASSERT_EQ(list.add(),6);
 }
@@ -131,7 +129,7 @@ TEST(testNumberList,testThatCorrectValuesAreGivenSimpleList) {
 TEST(testNumberList,testThatCorrectValuesAreGivenWithMax) {
     Numbers::NumberList list("1001,1002,1003,1004,1005",{","});
 
-    ASSERT_TRUE(list.to_num_vector());
+    list.to_num_vector();
 
     ASSERT_EQ(list.add(),15);
 }

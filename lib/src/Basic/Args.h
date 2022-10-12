@@ -8,12 +8,17 @@
  * @date 11-10-2022
  *
  * @copyright Copyright (C) 2022 Alert Logic
- *
+ * @addtogroup lib
+ * @{
+ * @addtogroup Basic
+ * @{
+ * @addtogroup Args
  */
 
 #include <map>
 #include <string>
 #include <cstddef>
+#include <unordered_set>
 
 namespace Basic {
 
@@ -26,14 +31,19 @@ public:
     int get_int_value(std::string key);
     std::string get_string_value(std::string key);
     bool is_key_present(std::string key);
-    bool is_string_present(std::string key);
 
 private:
     const char ** mArgv;
     int mArgc;
     std::map<std::string,int> mIntArgs;
     std::map<std::string,std::string>mStrArgs;
-    std::map<std::string,bool>mBoolArgs;
+    std::unordered_set<std::string>mArgs;
 };
 }
+
+/**
+ * @}
+ * @}
+ * @}
+ */
 #endif//__ARGS__
