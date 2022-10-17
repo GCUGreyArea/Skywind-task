@@ -30,19 +30,16 @@ Args::Args(int argc, const char ** argv)
  * @param a
  */
 void Args::add_key(std::string k, std::string a) {
-    bool flag=false;
     int idx=0;
 	while(idx<mArgc) {
 		// Input file
 		if(mArgv[idx] == k || mArgv[idx] == a) {
-			flag=true;
+            mArgs.emplace(k);
 			break;
 		}
 
         idx++;
 	}
-
-    mArgs.emplace(k);
 }
 
 /**
@@ -58,14 +55,11 @@ void Args::add_string_value(std::string key, std::string alt, std::string def ) 
 	std::string value="";
 	int idx=0;
 
-    std::string k = key;
-    std::string a = alt;
-
-
 	while(idx<mArgc) {
-		if(mArgv[idx] == k || mArgv[idx] == a) {
+		if(mArgv[idx] == key || mArgv[idx] == alt) {
 			if(++idx<mArgc) {
 				value = mArgv[idx];
+                mArgs.emplace(key);
 				break;
 			}
 		}
@@ -78,7 +72,6 @@ void Args::add_string_value(std::string key, std::string alt, std::string def ) 
     }
 
     mStrArgs.emplace(key, value);
-    mArgs.emplace(key);
 }
 
 /**
@@ -96,16 +89,14 @@ void Args::add_int_value(std::string key, std::string alt, int def) {
 	int value = 0;
 	int idx = 0;
 
-    std::string k = key;
-    std::string a = alt;
     std::string v{""};
-
 
 	while(idx<mArgc) {
 		// Input file
-		if(mArgv[idx] == k || mArgv[idx] == a) {
+		if(mArgv[idx] == key || mArgv[idx] == alt) {
 			if(++idx<mArgc) {
 				v = mArgv[idx];
+                mArgs.emplace(key);
 				break;
 			}
 		}
@@ -119,7 +110,6 @@ void Args::add_int_value(std::string key, std::string alt, int def) {
         value = def;
 
     mIntArgs.emplace(key, value);
-    mArgs.emplace(key);
 }
 
 /**

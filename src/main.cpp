@@ -65,7 +65,6 @@ int main(int argc, const char ** argv)
 		std::string cmd = args.get_string_value("-n");
 
 		// TODO: move this functionality into Args
-
 		size_t index = cmd.find("\\n");
 		while(index != -1) {
 			cmd = cmd.replace(index, 2, "\n");
@@ -82,6 +81,8 @@ int main(int argc, const char ** argv)
 			std::cerr << "Exception caught : " << e.what() << std::endl;
 			return -1;
 		}
+
+		return 0;
 	}
 
 	do_help();

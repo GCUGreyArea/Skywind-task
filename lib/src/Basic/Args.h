@@ -32,6 +32,7 @@ public:
     std::string get_string_value(std::string key);
     bool is_key_present(std::string key);
 
+
 private:
     const char ** mArgv;
     int mArgc;
