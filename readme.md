@@ -25,7 +25,7 @@ If you already have the code
 ```bash
 $ cd Skywind-task
 $ git pull
-$ make test benchmark clean project
+$ make clean test benchmark clean project
 $ ./build/task -n "//[.][,]\n1,2.3.4"
 ```
 
