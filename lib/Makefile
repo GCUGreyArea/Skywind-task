@@ -24,13 +24,13 @@ UNAME := $(shell uname -s)
 ifeq ($(UNAME), Darwin)
 CC       = cc
 CXX      = c++
-CFLAGS   = -std=c11 -Wall -g -fsanitize=address -I$(LIBDIR)/src
-CXXFLAGS = -std=c++17 -Wall -g -fsanitize=address -I$(LIBDIR)/src
+CFLAGS   = -std=c11 -Wall -g -fsanitize=address -I$(LIBDIR)/src -I../..
+CXXFLAGS = -std=c++17 -Wall -g -fsanitize=address -I$(LIBDIR)/src -I../..
 else
 CC     = gcc
 CXX    = g++
-CFLAGS   = -std=c11 -Wall -fPIC -fsanitize=address -I$(LIBDIR)/src
-CXXFLAGS = -std=c++17 -Wall -fPIC -fsanitize=address -I$(LIBDIR)/src
+CFLAGS   = -std=c11 -Wall -fPIC -fsanitize=address -I$(LIBDIR)/src -I../..
+CXXFLAGS = -std=c++17 -Wall -fPIC -fsanitize=address -I$(LIBDIR)/src -I../..
 endif
 
 

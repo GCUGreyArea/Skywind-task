@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "libTask.h"
+#include <libTask.h>
 
 TEST(testCmdParser,testThatCmdParserWorksWithBasicInput) {
     Numbers::CmdParser parser("//,\n1,2,3");
