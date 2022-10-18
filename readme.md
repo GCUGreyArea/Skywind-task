@@ -18,6 +18,18 @@ $ make test benchmark project
 $ ./build/task -n "//[.][,]\n1,2.3.4"
 ```
 
+
+## updating the project
+
+If you already have the code
+
+```bash
+$ cd Skywind-task
+$ git pull
+$ make test benchmark clean project
+$ ./build/task -n "//[.][,]\n1,2.3.4"
+```
+
 ## Building and running unit tests and benchmarks
 
 Unit tests and benchmarks are built in the standard build. Test are provided in the `test` directory and benchmarks in the `benchmark` directory. These can either be run from the command line or through the makefile.
