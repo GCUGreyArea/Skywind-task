@@ -14,7 +14,7 @@ The project has been designed and tested on MacOS but should build and function 
 ```bash
 $ git clone https://github.com/GCUGreyArea/Skywind-task.git
 $ cd Skywind-task
-$ make
+$ make test benchmark project
 $ ./build/task -n "//[.][,]\n1,2.3.4"
 ```
 
