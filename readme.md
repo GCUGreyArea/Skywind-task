@@ -18,8 +18,7 @@ $ make test benchmark project
 $ ./build/task -n "//[.][,]\n1,2.3.4"
 ```
 
-
-## updating the project
+## Updating the project
 
 If you already have the code
 
